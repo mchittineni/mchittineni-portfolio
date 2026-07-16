@@ -118,11 +118,25 @@
           rel="noopener noreferrer"
           >Google Cloud Vertex AI</a
         >
-        · Model Context Protocol (MCP) · OpenAI Agents &amp; Workflows
+        ·
+        <a
+          href="https://verify.skilljar.com/c/9oduoi3nigma"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Model Context Protocol (MCP)</a
+        >
+        · OpenAI Agents &amp; Workflows
       </p>
 
       <p class="certs-note" data-reveal>
         <strong>AWS Demonstrated:</strong>
+        <a
+          href="https://www.credly.com/badges/1b16c055-a5f2-41f6-8f03-569b4e3e4cf9/linked_in_profile"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Agentic AI Demonstrated</a
+        >
+        ·
         <a
           href="https://www.credly.com/badges/7dc752e5-43ae-4ee7-bbfd-33631e412f16/linked_in_profile"
           target="_blank"
