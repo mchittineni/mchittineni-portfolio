@@ -24,26 +24,32 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Cloud, DevOps & AI Engineer with 6+ years across AWS, Azure & GCP, building secure, governed, cost-aware platforms and production GenAI & agentic-AI systems.',
+            'Senior Platform, Cloud & DevOps Engineer with 6+ years across AWS, Azure, GCP & OCI, architecting Kubernetes, Terraform, Databricks, DevSecOps, and production Agentic AI & GenAI systems.',
         },
         // Open Graph
         { property: 'og:type', content: 'website' },
-        { property: 'og:title', content: 'Manideep Chittineni' },
+        {
+          property: 'og:title',
+          content: 'Manideep Chittineni | Senior Platform, Cloud & DevOps Engineer',
+        },
         {
           property: 'og:description',
           content:
-            'Cloud, DevOps & AI Engineer with 6+ years across AWS, Azure & GCP, now building production GenAI and agentic-AI systems under platform governance.',
+            'Senior Platform, Cloud & DevOps Engineer with 6+ years across AWS, Azure, GCP & OCI, architecting Kubernetes, Terraform, Databricks, DevSecOps, and production Agentic AI & GenAI systems.',
         },
         // Absolute URL required by social crawlers (update if a custom domain is added).
         { property: 'og:image', content: 'https://mchittineni.github.io/Portfolio/profile.jpg' },
         { property: 'og:url', content: 'https://mchittineni.github.io/Portfolio/' },
         // Twitter
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Manideep Chittineni' },
+        {
+          name: 'twitter:title',
+          content: 'Manideep Chittineni | Senior Platform, Cloud & DevOps Engineer',
+        },
         {
           name: 'twitter:description',
           content:
-            'Cloud, DevOps & AI Engineer with 6+ years across AWS, Azure & GCP, now building production GenAI and agentic-AI systems under platform governance.',
+            'Senior Platform, Cloud & DevOps Engineer with 6+ years across AWS, Azure, GCP & OCI, architecting Kubernetes, Terraform, Databricks, DevSecOps, and production Agentic AI & GenAI systems.',
         },
         { name: 'twitter:image', content: 'https://mchittineni.github.io/Portfolio/profile.jpg' },
       ],

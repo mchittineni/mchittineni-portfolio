@@ -75,7 +75,7 @@
           <a href="#about" class="footer__brand"
             >Manideep<span class="text-gradient"> Chittineni</span></a
           >
-          <p class="footer__tag">Cloud · DevOps · AI Engineer</p>
+          <p class="footer__tag">Senior Platform, Cloud, DevOps &amp; AI Engineer</p>
         </div>
 
         <div class="footer__social">

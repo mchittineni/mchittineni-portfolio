@@ -51,33 +51,46 @@
   </section>
 </template>
 
+<
 <script setup>
   const jobs = [
     {
       role: 'Cloud Engineer',
-      company: 'Infoplus Technologies',
-      period: 'Mar 2026 - Present',
+      company: 'Infoplus Technologies Limited',
+      period: 'Mar 2026 – Present',
       metrics: [
         { value: '<2 hrs', label: 'Platform Provisioning' },
-        { value: '25+', label: 'Terraform Modules' },
-        { value: '99.9%', label: 'K8s Availability' },
+        { value: '70%', label: 'Drift Reduction' },
+        { value: '30%', label: 'Toil Reduction (GenAI)' },
       ],
       groups: [
         {
-          title: 'Cloud-Native Infrastructure (AWS + GCP)',
+          title: 'Multi-Cloud Data Platforms & Kubernetes (AWS + GCP)',
           points: [
-            'Engineered cloud-native infra for a Speckle design ecosystem and Databricks platform, cutting provisioning from 3 days to under 2 hours',
-            'Built a modular Terraform framework of 25+ reusable modules with remote state, reaching 100% repeatable deploys and reducing drift by 70%',
-            'Operated managed Kubernetes on GCP at 99.9% availability; autoscaling cut idle compute by 25%',
-            'Integrated data-engineering workflows on Databricks (Unity Catalog, cluster policies, job orchestration)',
+            'Designed and delivered cloud-native infrastructure across AWS and GCP for a Databricks data platform, cutting environment provisioning time from 3 days to under 2 hours across a multi-region global rollout.',
+            'Built a modular Terraform framework of 25+ reusable modules with remote state management across AWS and GCP, validated with tfsec and Checkov, cutting configuration drift by 70%.',
+            'Engineered Python-based automation frameworks and tooling to automate cloud operations, infrastructure validation, deployment workflows, and platform maintenance across AWS and GCP.',
+            'Provisioned and operated managed Kubernetes clusters on GCP hosting Snowflake and Databricks services, sustaining 99.9% availability while autoscaling cut idle compute by 25%.',
+            'Built and governed Databricks on AWS and GCP workspaces, cluster policies, Unity Catalog, and job orchestration, bringing all data engineering workloads under centralised governance.',
+            'Partnered with data engineers and platform teams to integrate Snowflake and Databricks pipelines, aligning networking and identity to remove cross-team blockers.',
           ],
         },
         {
-          title: 'GenAI & Platform Engineering',
+          title: 'CI/CD, DevSecOps, Observability & FinOps',
           points: [
-            'Prototyped GenAI and agentic-AI in platform tooling (Claude API, OpenAI, MCP), reducing manual toil by 30%',
-            'Ran LLMOps on Amazon Bedrock and Vertex AI, reusing the same IaC, CI/CD, identity, and FinOps controls with zero new security findings',
-            'Applied Zero Trust, least-privilege IAM, and policy-as-code across the platform',
+            'Standardised pipeline delivery with reusable YAML configuration frameworks across GitHub Actions, AWS CodePipeline, and Google Cloud Build, cutting release lead time by 50% and eliminating 40% of duplicated configurations.',
+            'Enforced least-privilege IAM and Zero Trust network segmentation (VPC, PrivateLink, Private Service Connect) with policy-as-code guardrails; ran Wiz continuously across AWS and GCP for CSPM.',
+            'Managed AWS Secrets Manager, Google Secret Manager, and KMS for encryption and credential governance, supporting GDPR and SOC 2 compliance.',
+            'Embedded observability using CloudWatch, Google Cloud Monitoring, Prometheus, and Grafana, reducing mean time to detect (MTTD) by 40%.',
+            'Drove FinOps governance across EKS, GKE, and Databricks compute through autoscaling and rightsizing, lowering monthly cloud spend by 25%.',
+          ],
+        },
+        {
+          title: 'AI Engineering & LLMOps',
+          points: [
+            'Architected and delivered agentic AI and RAG-based platform tooling using Claude API, OpenAI APIs, and Model Context Protocol (MCP), deploying governed AI workloads on Amazon Bedrock and Google Cloud Vertex AI to reduce manual operational effort by 30%.',
+            'Applied LLMOps practices by extending existing IaC, CI/CD, IAM, and FinOps controls to AI deployments, introducing production AI capabilities with zero new security findings.',
+            'Used ServiceNow for change management and infrastructure approvals, ensuring platform changes remained auditable and compliant with ITSM processes.',
           ],
         },
       ],
@@ -85,80 +98,89 @@
     {
       role: 'Senior Cloud & DevOps Engineer',
       company: 'University of Exeter',
-      period: 'Oct 2022 - Dec 2025',
+      period: 'Oct 2022 – Dec 2025',
       metrics: [
         { value: '50,000+', label: 'Users Supported' },
-        { value: '99.99%', label: 'Uptime' },
-        { value: '45%', label: 'Cost Reduction' },
+        { value: '99.99%', label: 'Platform Uptime' },
+        { value: '45%', label: 'Spend Reduction' },
       ],
       groups: [
         {
-          title: 'Cloud Platforms & Governance (AWS)',
+          title: 'AWS Architecture & Internal Tooling',
           points: [
-            'Ran hybrid and AWS platforms supporting 50,000+ users at 99.99% uptime',
-            'Built serverless, event-driven architectures (Lambda, API Gateway, SNS/SQS, DynamoDB)',
-            'Established multi-account governance with Organizations, Control Tower, and SCPs',
-            'Drove FinOps (RIs, Spot, autoscaling, rightsizing) cutting spend by 45%; mentored 5+ engineers',
+            'Acted as senior cloud engineer and architectural advisor across enterprise-scale hybrid and AWS environments supporting 50,000+ users, achieving 99.99% uptime.',
+            'Architected containerised and serverless compute across ECS, EKS, Lambda, and Step Functions, with S3, RDS, DynamoDB, Glue, and Redshift as the core data layer.',
+            'Designed event-driven serverless architectures using API Gateway, SNS/SQS, SES, and EventBridge for secure, scalable integrations; delivered secured app delivery via CloudFront, WAF, ACM, and Cognito.',
+            'Built and shipped full-stack internal tooling React and Flutter front ends backed by TypeScript services and Firebase (auth, hosting, real-time data) deployed through unified CI/CD pipelines.',
+            'Designed multi-account architecture using AWS Organizations and Control Tower, enforcing governance through Service Control Policies (SCPs).',
           ],
         },
         {
-          title: 'Security & Compliance (DevSecOps)',
+          title: 'DevSecOps, Automation & SRE',
           points: [
-            'Implemented Zero Trust least-privilege IAM and federated identity (SSO/OIDC, RBAC/ABAC)',
-            'Managed Secrets Manager + KMS rotation, Security Hub, GuardDuty, and Config',
-            'Aligned controls to GDPR / SOC 2, reducing incident response time by 50%',
+            'Automated cloud provisioning end-to-end with Terraform, AWS CDK, and AWS SDK, validated with tfsec and Checkov before every deployment.',
+            'Designed Zero Trust, least-privilege IAM architecture across serverless and containerised workloads, with federated identity (SSO/OIDC/RBAC/ABAC) via Cognito and Microsoft Entra ID.',
+            'Automated credential lifecycle management with Secrets Manager and KMS; deployed GuardDuty, Security Hub, AWS Config, and CloudTrail, cutting incident response time by 50%.',
+            'Optimised release cycles by 40% through GitHub Actions and CodePipeline (including automated App Store/Play Store releases); built testing with JMeter, Cypress/Playwright, and API health checks.',
+            'Reduced infrastructure spend by 45% through Reserved/Spot Instances, rightsizing, and Infracost CI/CD pre-merge checks; authored technical documentation with JSDoc and mentored 5+ engineers.',
           ],
         },
       ],
     },
     {
       role: 'DevOps / Platform Engineer',
-      company: 'Procadence Technologies',
-      period: 'Apr 2021 - Sep 2022',
+      company: 'Procadence Technologies Limited',
+      period: 'Apr 2021 – Sep 2022',
       metrics: [
         { value: '200+', label: 'Microservices' },
-        { value: '99.9%', label: 'Uptime' },
-        { value: '100%', label: 'Keyless CI/CD' },
+        { value: '99.9%', label: 'GKE Uptime' },
+        { value: '100%', label: 'Keyless WIF CI/CD' },
       ],
       groups: [
         {
-          title: 'Platform Engineering (GCP / GKE)',
+          title: 'GCP Platform Engineering & Automation',
           points: [
-            'Operated GKE clusters running 200+ microservices for 15+ teams at 99.9% uptime; utilisation up 30%',
-            'Authored reusable Terraform IaC for IAM and governance, cutting drift and manual effort by 60%',
+            'Advised 15+ development teams on secure, multi-tenant cloud-native and hybrid architecture on Google Cloud Platform.',
+            'Designed and operated GKE clusters supporting 200+ microservices, improving resource utilisation by 30% while maintaining 99.9% uptime.',
+            'Built reusable Terraform modules for IAM and policy-as-code governance, validated with tfsec and Checkov, cutting configuration drift and provisioning effort by 60%.',
+            'Built Python automation tooling to integrate with cloud APIs, Kubernetes workflows, and infrastructure processes, automating operational tasks and boosting productivity.',
           ],
         },
         {
-          title: 'Security & Multi-Tenancy',
+          title: 'Zero Trust Security & Operations',
           points: [
-            'Delivered keyless CI/CD via Workload Identity Federation, eliminating 100% of long-lived service-account keys',
-            'Enforced multi-tenant isolation (namespaces, RBAC, IAM Conditions) and Zero Trust via IAP, with zero cross-tenant incidents',
+            'Built CI/CD pipelines with Jenkins and Cloud Build and implemented keyless CI/CD via Workload Identity Federation, eliminating 100% of long-lived service-account keys.',
+            'Re-architected IAM to least-privilege RBAC/ABAC with workload identity, removing all long-lived credentials across serverless and containerised workloads.',
+            'Enforced multi-tenant isolation using Kubernetes namespaces, RBAC, and IAM Conditions, and deployed Zero Trust access via Identity-Aware Proxy (IAP) with zero cross-tenant incidents.',
+            'Implemented monitoring, autoscaling, and capacity planning (cutting waste by 20%), performed root cause analysis on incidents, authored runbooks (cutting onboarding by 50%), and used ServiceNow for ITSM controls.',
           ],
         },
       ],
     },
     {
       role: 'Software Engineer Intern',
-      company: 'Procadence Technologies',
-      period: 'Jun 2020 - Mar 2021',
+      company: 'Procadence Technologies Limited',
+      period: 'Jun 2020 – Mar 2021',
       metrics: [
         { value: '150+', label: 'Azure Subscriptions' },
-        { value: '45%', label: 'Less Manual Effort' },
-        { value: '35%', label: 'Faster Releases' },
+        { value: '45%', label: 'Effort Reduction' },
+        { value: '35%', label: 'Release Automation' },
       ],
       groups: [
         {
-          title: 'Azure Automation',
+          title: 'Azure Automation & CI/CD',
           points: [
-            'Automated Azure provisioning (ARM) across 150+ subscriptions, reducing manual effort by 45%',
-            'Built Azure DevOps CI/CD with automated testing and secure deploys, cutting release effort by 35%',
+            'Automated Azure infrastructure provisioning using ARM templates across 150+ subscriptions, reducing manual configuration effort by 45%.',
+            'Created PowerShell automation scripts to assist Azure resource management, deployment validation, and operational workflows.',
+            'Built and enhanced CI/CD pipelines using Azure DevOps with automated testing and secure deployment workflows, cutting manual release effort by 35%.',
           ],
         },
         {
-          title: 'Identity & Governance',
+          title: 'Identity & Compliance',
           points: [
-            'Centralised secrets via Key Vault; managed Entra ID RBAC and service principals at scale',
-            'Enforced Zero Trust via Azure Policy, Management Groups, and Conditional Access (MFA + device compliance)',
+            'Integrated Azure Key Vault into deployment pipelines and Kubernetes workloads, removing hard-coded secrets and centralising certificate/encryption-key management.',
+            'Administered Microsoft Entra ID RBAC hierarchies and service principals across 150+ subscriptions, enforcing Zero Trust standards via Azure Policy and Conditional Access (MFA, device compliance).',
+            'Integrated Azure Monitor and Application Insights for SLA validation, and authored 20+ runbooks and technical standards that cut onboarding time.',
           ],
         },
       ],
