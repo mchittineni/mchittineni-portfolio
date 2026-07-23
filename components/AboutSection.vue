@@ -10,15 +10,16 @@
       <!-- Content -->
       <div class="hero__content">
         <p class="eyebrow animate-in" style="animation-delay: 0.05s">
-          Cloud · DevOps · AI Engineer
+          Senior Platform, Cloud &amp; DevOps Engineer
         </p>
         <h1 class="hero__title animate-in" style="animation-delay: 0.15s">
           Hi, I'm <span class="text-gradient">Manideep&nbsp;Chittineni</span>
         </h1>
         <p class="hero__lede animate-in" style="animation-delay: 0.25s">
-          I design, build, secure, and operate scalable cloud-native and hybrid infrastructure
-          across AWS, Azure, and GCP, now extending that foundation into production GenAI and
-          agentic-AI engineering.
+          Senior Platform, Cloud &amp; DevOps Engineer with 6+ years of experience architecting,
+          securing, and operating enterprise cloud platforms across AWS, Azure, GCP, and OCI
+          specializing in Kubernetes, Terraform, Databricks, Snowflake, DevSecOps, and production
+          Agentic AI &amp; GenAI engineering.
         </p>
 
         <div class="hero__actions animate-in" style="animation-delay: 0.35s">
