@@ -66,6 +66,7 @@
       <AboutSection />
       <SkillsSection />
       <ExperienceSection />
+      <ProjectsSection />
       <ContactSection />
     </main>
 
@@ -107,6 +108,7 @@
   import AboutSection from '~/components/AboutSection.vue'
   import SkillsSection from '~/components/SkillsSection.vue'
   import ExperienceSection from '~/components/ExperienceSection.vue'
+  import ProjectsSection from '~/components/ProjectsSection.vue'
   import ContactSection from '~/components/ContactSection.vue'
 
   // Base URL: "/" locally & on AWS/CloudFront, "/<repo>/" on GitHub Pages.
@@ -117,6 +119,7 @@
     { label: 'About', href: '#about' },
     { label: 'Skills', href: '#skills' },
     { label: 'Experience', href: '#experience' },
+    { label: 'Projects', href: '#projects' },
     { label: 'Contact', href: '#contact' },
   ]
 
