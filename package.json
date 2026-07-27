@@ -13,7 +13,7 @@
   "devDependencies": {
     "@nuxt/devtools": "^3.2.4",
     "autoprefixer": "^10.5.4",
-    "nuxt": "^3.21.8",
+    "nuxt": "^4.5.1",
     "postcss": "^8.5.22",
     "prettier": "^3.9.6",
     "tailwindcss": "^4.3.3",
