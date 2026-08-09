@@ -150,7 +150,7 @@ to the full choice, reachable from the floating switcher on every interface.
 
 ### Prerequisites
 
-- **Node.js 22.x** (matches the CI runner)
+- **Node.js 24.x** (matches the CI runner)
 - **npm** (ships with Node)
 
 ### Install & run
