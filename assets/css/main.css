@@ -4,7 +4,110 @@
    Tailwind utilities still work in templates via the Nuxt module.
    ============================================================ */
 
+/* ============================================================
+   Theme tokens.
+
+   Three states, not two. An explicit choice stamps data-theme on <html>;
+   the default "system" setting stamps nothing, so only prefers-color-scheme
+   separates light from dark. Every colour therefore has to be defined on the
+   bare :root and only *redefined* in the two override blocks — a colour whose
+   sole definition lives behind a media query or [data-theme] never applies in
+   the unstamped state, which is how you get one theme's text on the other
+   theme's background.
+   ============================================================ */
 :root {
+  color-scheme: light;
+
+  --bg: #f6f7fb;
+  --bg-soft: #ffffff;
+
+  --surface: rgba(16, 18, 40, 0.035);
+  --surface-2: rgba(16, 18, 40, 0.07);
+  --border: rgba(16, 18, 40, 0.11);
+  --border-strong: rgba(16, 18, 40, 0.2);
+
+  --text: #14162b;
+  --text-soft: #454a6b;
+  --text-dim: #6a6f92;
+
+  --accent: #4f46e5; /* indigo-600 — darkened so it holds contrast on light */
+  --accent-2: #0e7490; /* cyan-700 */
+  --accent-grad: linear-gradient(135deg, #4f46e5 0%, #0e7490 100%);
+  --ring: rgba(79, 70, 229, 0.45);
+  --on-accent: #ffffff; /* text that sits on top of --accent-grad */
+
+  /* Surfaces that are not simply "the page": nav backdrop, popovers, scrims. */
+  --elevated: rgba(255, 255, 255, 0.82);
+  --overlay: rgba(20, 22, 43, 0.45);
+  --scrollbar: rgba(16, 18, 40, 0.22);
+  --scrollbar-hover: rgba(16, 18, 40, 0.34);
+  --shadow-card: 0 24px 60px -28px rgba(16, 18, 40, 0.28);
+  --shadow-tile: 0 2px 10px -4px rgba(16, 18, 40, 0.18);
+  --glow-1: rgba(79, 70, 229, 0.12);
+  --glow-2: rgba(14, 116, 144, 0.1);
+
+  --radius: 1.1rem;
+  --radius-sm: 0.7rem;
+  --maxw: 1200px;
+  --nav-h: 4.5rem;
+
+  /* Console + terminal modes.
+     Tighter chrome than the marketing surface — 5px radii and hairlines, the
+     way real infrastructure tooling looks — plus a semantic state ramp kept
+     deliberately separate from the brand accent. */
+  --chrome: #eceef6;
+  --sunken: rgba(16, 18, 40, 0.05);
+  --radius-chrome: 5px;
+  --ok: #047857;
+  --warn: #b45309;
+  --err: #b91c1c;
+
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+}
+
+/* Dark tokens. Applied when the OS asks for dark and the visitor has not
+   explicitly chosen light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --bg: #0a0b12;
+    --bg-soft: #11131d;
+
+    --surface: rgba(255, 255, 255, 0.04);
+    --surface-2: rgba(255, 255, 255, 0.06);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.16);
+
+    --text: #e9eaf3;
+    --text-soft: #a8aece;
+    --text-dim: #717798;
+
+    --accent: #818cf8;
+    --accent-2: #22d3ee;
+    --accent-grad: linear-gradient(135deg, #818cf8 0%, #22d3ee 100%);
+    --ring: rgba(129, 140, 248, 0.55);
+    --on-accent: #0a0b12;
+
+    --elevated: rgba(10, 11, 18, 0.78);
+    --overlay: rgba(5, 6, 12, 0.86);
+    --scrollbar: rgba(255, 255, 255, 0.12);
+    --scrollbar-hover: rgba(255, 255, 255, 0.2);
+    --shadow-card: 0 24px 60px -28px rgba(0, 0, 0, 0.8);
+    --shadow-tile: 0 2px 10px -4px rgba(0, 0, 0, 0.5);
+    --glow-1: rgba(129, 140, 248, 0.14);
+    --glow-2: rgba(34, 211, 238, 0.1);
+
+    --chrome: #0d0f18;
+    --sunken: rgba(0, 0, 0, 0.22);
+    --ok: #34d399;
+    --warn: #fbbf24;
+    --err: #f87171;
+  }
+}
+
+/* The same dark tokens, applied when the visitor explicitly picks dark. */
+:root[data-theme='dark'] {
   color-scheme: dark;
 
   --bg: #0a0b12;
@@ -19,15 +122,26 @@
   --text-soft: #a8aece;
   --text-dim: #717798;
 
-  --accent: #818cf8; /* indigo-400 */
-  --accent-2: #22d3ee; /* cyan-400 */
+  --accent: #818cf8;
+  --accent-2: #22d3ee;
   --accent-grad: linear-gradient(135deg, #818cf8 0%, #22d3ee 100%);
   --ring: rgba(129, 140, 248, 0.55);
+  --on-accent: #0a0b12;
 
-  --radius: 1.1rem;
-  --radius-sm: 0.7rem;
-  --maxw: 1200px;
-  --nav-h: 4.5rem;
+  --elevated: rgba(10, 11, 18, 0.78);
+  --overlay: rgba(5, 6, 12, 0.86);
+  --scrollbar: rgba(255, 255, 255, 0.12);
+  --scrollbar-hover: rgba(255, 255, 255, 0.2);
+  --shadow-card: 0 24px 60px -28px rgba(0, 0, 0, 0.8);
+  --shadow-tile: 0 2px 10px -4px rgba(0, 0, 0, 0.5);
+  --glow-1: rgba(129, 140, 248, 0.14);
+  --glow-2: rgba(34, 211, 238, 0.1);
+
+  --chrome: #0d0f18;
+  --sunken: rgba(0, 0, 0, 0.22);
+  --ok: #34d399;
+  --warn: #fbbf24;
+  --err: #f87171;
 }
 
 html {
@@ -46,16 +160,16 @@ body {
     sans-serif;
   background-color: var(--bg);
   background-image:
-    radial-gradient(55rem 55rem at 105% -10%, rgba(129, 140, 248, 0.14), transparent 60%),
-    radial-gradient(45rem 45rem at -10% 8%, rgba(34, 211, 238, 0.1), transparent 55%);
+    radial-gradient(55rem 55rem at 105% -10%, var(--glow-1), transparent 60%),
+    radial-gradient(45rem 45rem at -10% 8%, var(--glow-2), transparent 55%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: rgba(129, 140, 248, 0.35);
-  color: #fff;
+  background: var(--ring);
+  color: var(--text);
 }
 
 /* Custom scrollbar */
@@ -66,12 +180,12 @@ body {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--scrollbar);
   border-radius: 999px;
   border: 3px solid var(--bg);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--scrollbar-hover);
 }
 
 /* ---------- Layout ---------- */
@@ -156,7 +270,7 @@ body {
   transform: translateY(-6px);
   border-color: var(--border-strong);
   background: var(--surface-2);
-  box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--shadow-card);
 }
 
 /* ---------- Buttons ---------- */
@@ -186,7 +300,7 @@ body {
 
 .btn-primary {
   background: var(--accent-grad);
-  color: #0a0b12;
+  color: var(--on-accent);
   box-shadow: 0 10px 30px -10px rgba(129, 140, 248, 0.6);
 }
 .btn-primary:hover {
@@ -224,14 +338,15 @@ body {
   display: grid;
   place-items: center;
   background: #ffffff;
+  border: 1px solid var(--border);
   border-radius: 0.65rem;
-  box-shadow: 0 2px 10px -4px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-tile);
 }
 
 /* ---------- Forms ---------- */
 .field {
   width: 100%;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 0.7rem;
   padding: 0.75rem 0.95rem;
@@ -249,7 +364,7 @@ body {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--ring);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--surface-2);
 }
 
 /* ---------- Accessibility ---------- */
