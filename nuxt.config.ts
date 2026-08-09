@@ -3,6 +3,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   nitro: {
     preset: 'static', // full static generation -> .output/public
+    prerender: {
+      // The interfaces are reachable from /modes and the floating switcher,
+      // both of which the crawler can follow — but list them so a build never
+      // silently ships without them.
+      routes: ['/', '/modes', '/console', '/cloud', '/agent', '/ide', '/terminal'],
+    },
   },
   routeRules: {
     // prerender index route
@@ -19,7 +25,6 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'color-scheme', content: 'dark' },
         { name: 'theme-color', content: '#0a0b12' },
         {
           name: 'description',
@@ -38,8 +43,11 @@ export default defineNuxtConfig({
             'Senior Platform, Cloud & DevOps Engineer with 6+ years across AWS, Azure, GCP & OCI, architecting Kubernetes, Terraform, Databricks, DevSecOps, and production Agentic AI & GenAI systems.',
         },
         // Absolute URL required by social crawlers (update if a custom domain is added).
-        { property: 'og:image', content: 'https://mchittineni.github.io/Portfolio/profile.jpg' },
-        { property: 'og:url', content: 'https://mchittineni.github.io/Portfolio/' },
+        {
+          property: 'og:image',
+          content: 'https://mchittineni.github.io/mchittineni-portfolio/profile.jpg',
+        },
+        { property: 'og:url', content: 'https://mchittineni.github.io/mchittineni-portfolio/' },
         // Twitter
         { name: 'twitter:card', content: 'summary_large_image' },
         {
@@ -51,7 +59,19 @@ export default defineNuxtConfig({
           content:
             'Senior Platform, Cloud & DevOps Engineer with 6+ years across AWS, Azure, GCP & OCI, architecting Kubernetes, Terraform, Databricks, DevSecOps, and production Agentic AI & GenAI systems.',
         },
-        { name: 'twitter:image', content: 'https://mchittineni.github.io/Portfolio/profile.jpg' },
+        {
+          name: 'twitter:image',
+          content: 'https://mchittineni.github.io/mchittineni-portfolio/profile.jpg',
+        },
+      ],
+      script: [
+        {
+          // Applies the stored theme before first paint, so an explicit light
+          // or dark choice never flashes the other theme during hydration.
+          innerHTML:
+            "try{var t=localStorage.getItem('mc:theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}",
+          tagPosition: 'head',
+        },
       ],
       link: [
         // Relative so it resolves at both root ("/") and a project-page subpath.
