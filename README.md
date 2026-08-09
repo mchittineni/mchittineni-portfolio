@@ -80,17 +80,60 @@ posture — are in [`infra/README.md`](infra/README.md).
 
 ## Project structure
 
+The site ships **six interfaces over one dataset**. All content lives in
+`content/`, so no interface owns it and none can drift from another.
+
+| Route       | Interface     | What it is                                                               |
+| ----------- | ------------- | ------------------------------------------------------------------------ |
+| `/`         | Portfolio     | The conventional read. Canonical URL.                                    |
+| `/console`  | Control plane | Career as platform resources — Deployments, Repositories, Node Pools.    |
+| `/cloud`    | Multi-cloud   | The same story per vendor, chrome reskinned for AWS / Azure / GCP / OCI. |
+| `/agent`    | Agent         | Questions answered as visible tool-call traces. Scripted, no model call. |
+| `/ide`      | Editor        | The background as a source tree, with an integrated terminal.            |
+| `/terminal` | Terminal      | A real shell: history, completion, pipes, shareable commands.            |
+| `/modes`    | Chooser       | All six side by side, with number-key shortcuts. Linked from every page. |
+
+A first-time visitor gets a boot gate offering all six. It is a client-only
+overlay rendered after mount, so the prerendered HTML never contains it and
+crawlers, link previews and no-JS visitors always land on the portfolio itself.
+After that first visit the gate never returns; `/modes` is the durable way back
+to the full choice, reachable from the floating switcher on every interface.
+
 ```
 .
-├── app.vue                     # App shell: nav (+ mobile menu), <main>, footer
-├── nuxt.config.ts              # SSG config, <head> (SEO/OG/Twitter), fonts
-├── tailwind.config.js          # Tailwind theme extensions
+├── app.vue                     # <NuxtLayout><NuxtPage /></NuxtLayout>
+├── nuxt.config.ts              # SSG config, prerendered routes, <head> (SEO/OG/Twitter)
 ├── assets/css/main.css         # Design system: tokens, components, animations
+├── content/                    # Single source of truth for all three interfaces
+│   ├── profile.ts              # Identity, stats, contact details, socials
+│   ├── experience.ts           # Roles
+│   ├── projects.ts             # Repositories + language palette
+│   ├── skills.ts               # Skill pools, proficiency, certifications
+│   └── index.ts                # Re-exports + platform projections (deployments, events…)
+├── layouts/
+│   ├── default.vue             # Marketing chrome: nav (+ mobile menu), footer
+│   └── bare.vue                # Full-viewport shell for console/terminal
+├── pages/
+│   ├── index.vue               # The scroll portfolio
+│   ├── modes.vue               # Chooser: all six interfaces, 1–6 shortcuts
+│   ├── console.vue             # Control plane: resources, ⌘K palette, deep-linkable views
+│   ├── cloud.vue               # Multi-cloud: per-vendor tabs, chrome reskin, filtered content
+│   ├── agent.vue               # Agent: scripted tool-call traces over content/
+│   ├── ide.vue                 # Editor: explorer, tabs, integrated terminal
+│   └── terminal.vue            # Shell UI
 ├── components/
 │   ├── AboutSection.vue        # Hero (id="about")
-│   ├── SkillsSection.vue       # Skills, proficiency, certifications (data-driven)
-│   ├── ExperienceSection.vue   # Work timeline (data-driven)
-│   └── ContactSection.vue      # Contact form (mailto) + info + socials
+│   ├── SkillsSection.vue       # Skills, proficiency, certifications
+│   ├── ExperienceSection.vue   # Work timeline
+│   ├── ProjectsSection.vue     # Filterable repositories
+│   ├── ContactSection.vue      # Contact form (mailto) + info + socials
+│   ├── BootGate.vue            # First-visit interface chooser (client-only)
+│   ├── ModeSwitcher.vue        # Menu across all six interfaces
+│   └── console/                # ResourceTable, DescribePane, StatusPill, LangBar
+├── composables/
+│   ├── useMode.ts              # Mode detection + persistence
+│   └── useShell.ts             # Shell engine: parser, pipes, history, completion
+├── utils/commands.ts           # Terminal command allowlist
 ├── plugins/
 │   └── reveal.client.ts        # IntersectionObserver scroll-reveal (client-only)
 ├── public/                     # Served as-is: profile.jpg, resume PDF, robots.txt, .nojekyll
