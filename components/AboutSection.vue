@@ -72,15 +72,9 @@
 </template>
 
 <script setup>
+  import { stats } from '~/content'
   // Base URL ("/" locally & on AWS, "/<repo>/" on GitHub Pages) for public assets.
   const base = useRuntimeConfig().app.baseURL
-
-  const stats = [
-    { value: '6+', label: 'Years Experience' },
-    { value: '4', label: 'Clouds Mastered' },
-    { value: '99.99%', label: 'Uptime Delivered' },
-    { value: '45%', label: 'Cost Reduction' },
-  ]
 </script>
 
 <style scoped>
@@ -204,7 +198,7 @@
     gap: 0.5rem;
     margin-top: -1.25rem;
     padding: 0.5rem 1rem;
-    background: rgba(10, 11, 18, 0.85);
+    background: var(--elevated);
     border: 1px solid var(--border-strong);
     border-radius: 999px;
     font-size: 0.85rem;
