@@ -5,9 +5,7 @@ on:
     types: [opened, synchronize, reopened]
 
 permissions:
-  # The action needs read access to scan the code
   contents: read
-  # The action needs write access to post the dependency blast radius report
   pull-requests: write
 
 jobs:
@@ -17,8 +15,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
         
-      - name: Run Blast Radius Check
-        uses: mchittineni/blast-radius-check@main
+      - name: 🔍 Step 1 - Generate Dependency Graph
+        uses: mchittineni/blast-radius-indexer@v1
+        with:
+          org-name: ${{ github.repository_owner }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🛡️ Step 2 - Check PR Impact
+        uses: mchittineni/blast-radius-check@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
