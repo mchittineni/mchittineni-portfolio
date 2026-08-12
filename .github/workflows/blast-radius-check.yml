@@ -1,0 +1,24 @@
+name: Blast Radius PR Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  # The action needs read access to scan the code
+  contents: read
+  # The action needs write access to post the dependency blast radius report
+  pull-requests: write
+
+jobs:
+  blast-radius-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v7
+        
+      - name: Run Blast Radius Check
+        uses: mchittineni/blast-radius-check@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
