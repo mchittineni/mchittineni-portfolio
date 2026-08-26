@@ -4,7 +4,7 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'semiannually'
     open-pull-requests-limit: 10
     groups:
       # Batch low-risk bumps into one PR to cut review noise.
@@ -17,7 +17,7 @@ updates:
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'weekly'
+      interval: 'semiannually'
     open-pull-requests-limit: 10
     groups:
       actions:
