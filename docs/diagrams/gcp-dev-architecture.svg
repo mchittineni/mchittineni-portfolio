@@ -1,0 +1,463 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="940" height="702" viewBox="0 0 940 702" role="img" aria-label="Portfolio — GCP Dev">
+  <title>Portfolio — GCP Dev</title>
+  
+  
+  <style>
+    .diagram-node { cursor: pointer; transition: opacity 0.25s ease; }
+    .diagram-node .node-card { transition: stroke 0.2s ease, stroke-width 0.2s ease; }
+    .diagram-node:hover .node-card { stroke: #38bdf8; stroke-width: 2.5px; }
+    .diagram-edge { transition: opacity 0.25s ease; }
+    .diagram-edge .edge-path { transition: stroke 0.2s ease, stroke-width 0.2s ease; }
+    .diagram-edge .edge-flow {
+      stroke-dasharray: 4 14;
+      animation: tfarch-flow 1.6s linear infinite;
+      pointer-events: none;
+    }
+    .diagram-edge:hover .edge-path,
+    .diagram-edge.active .edge-path { stroke: #38bdf8; stroke-width: 2.4px; }
+    .diagram-edge:hover .edge-flow,
+    .diagram-edge.active .edge-flow { stroke: #7dd3fc; stroke-opacity: 0.9; animation-duration: 0.8s; }
+    .diagram-node.dim, .diagram-edge.dim { opacity: 0.12; }
+    @keyframes tfarch-flow { to { stroke-dashoffset: -18; } }
+    @media (prefers-reduced-motion: reduce) {
+      .diagram-edge .edge-flow { animation: none; }
+    }
+  </style>
+
+  <defs>
+    <filter id="node-shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="node-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#38bdf8" flood-opacity="0.6"/>
+    </filter>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#94a3b8" />
+    </marker>
+  </defs>
+
+  <rect width="940" height="702" fill="#0b1120"/>
+  <text x="40" y="36" fill="#f8fafc" font-size="18" font-weight="800" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Portfolio — GCP Dev</text>
+  <g transform="translate(0, 26)">
+    <g class="containers-layer"></g>
+    <g class="edges-layer">
+      <g class="diagram-edge" data-source="module.web_app.google_compute_global_forwarding_rule.http" data-target="module.web_app.google_compute_url_map.site">
+        <path class="edge-hit" d="M 150 100 C 260 100, 480 100, 590 100" fill="none" stroke="transparent" stroke-width="14"/>
+        <path class="edge-path" d="M 150 100 C 260 100, 480 100, 590 100" fill="none" stroke="rgba(148, 163, 184, 0.35)" stroke-width="1.8" marker-end="url(#arrowhead)"/>
+        <path class="edge-flow" d="M 150 100 C 260 100, 480 100, 590 100" fill="none" stroke="#94a3b8" stroke-opacity="0.45" stroke-width="2.2" stroke-linecap="round"/>
+        
+          <rect x="347" y="91" width="46" height="18" rx="4" fill="rgba(15, 23, 42, 0.88)" stroke="rgba(255,255,255,0.1)"/>
+          <text x="370" y="103" text-anchor="middle" fill="#cbd5e1" font-size="9" font-family="'JetBrains Mono', ui-monospace, monospace">Route</text>
+        
+      </g>
+    
+      <g class="diagram-edge" data-source="module.web_app.google_compute_url_map.site" data-target="module.web_app.google_compute_backend_bucket.site">
+        <path class="edge-hit" d="M 590 100 C 480 134.8, 260 413.2, 150 448" fill="none" stroke="transparent" stroke-width="14"/>
+        <path class="edge-path" d="M 590 100 C 480 134.8, 260 413.2, 150 448" fill="none" stroke="rgba(148, 163, 184, 0.35)" stroke-width="1.8" marker-end="url(#arrowhead)"/>
+        <path class="edge-flow" d="M 590 100 C 480 134.8, 260 413.2, 150 448" fill="none" stroke="#94a3b8" stroke-opacity="0.45" stroke-width="2.2" stroke-linecap="round"/>
+        
+          <rect x="347" y="265" width="46" height="18" rx="4" fill="rgba(15, 23, 42, 0.88)" stroke="rgba(255,255,255,0.1)"/>
+          <text x="370" y="277" text-anchor="middle" fill="#cbd5e1" font-size="9" font-family="'JetBrains Mono', ui-monospace, monospace">Static</text>
+        
+      </g>
+    
+      <g class="diagram-edge" data-source="module.web_app.google_compute_backend_bucket.site" data-target="module.web_app.google_storage_bucket.site">
+        <path class="edge-hit" d="M 150 448 C 150 458.4, 150 541.6, 150 552" fill="none" stroke="transparent" stroke-width="14"/>
+        <path class="edge-path" d="M 150 448 C 150 458.4, 150 541.6, 150 552" fill="none" stroke="rgba(148, 163, 184, 0.35)" stroke-width="1.8" marker-end="url(#arrowhead)"/>
+        <path class="edge-flow" d="M 150 448 C 150 458.4, 150 541.6, 150 552" fill="none" stroke="#94a3b8" stroke-opacity="0.45" stroke-width="2.2" stroke-linecap="round"/>
+        
+          <rect x="127" y="491" width="46" height="18" rx="4" fill="rgba(15, 23, 42, 0.88)" stroke="rgba(255,255,255,0.1)"/>
+          <text x="150" y="503" text-anchor="middle" fill="#cbd5e1" font-size="9" font-family="'JetBrains Mono', ui-monospace, monospace">Origin</text>
+        
+      </g>
+    </g>
+    <g class="nodes-layer">
+      <g class="diagram-node"
+         data-id="module.github_oidc.google_iam_workload_identity_pool.github"
+         transform="translate(60, 200)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>github — google_iam_workload_identity_pool (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path d="M22,2 L22,22 L2,22 L2,2 L22,2 Z M12,6.61538462 C10.2131185,6.61538462 8.69051386,7.74688823 8.10959985,9.33248166 L8.10959985,9.33248166 L7.94899666,9.33277592 C5.93795979,9.33277592 4.30769231,10.9630434 4.30769231,12.9740803 C4.30769231,14.9851171 5.93795979,16.6153846 7.94899666,16.6153846 L7.94899666,16.6153846 L16.0510033,16.6153846 C18.0620402,16.6153846 19.6923077,14.9851171 19.6923077,12.9740803 C19.6923077,10.9630434 18.0620402,9.33277592 16.0510033,9.33277592 L16.0510033,9.33277592 L15.8904002,9.33248166 C15.3094861,7.74688823 13.7868815,6.61538462 12,6.61538462 Z" fill="#4285F4"></path></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">github</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">iam_workload_id…</text>
+          <text y="30" fill="#5F6368" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Google Cloud Reso…</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.github_oidc.google_iam_workload_identity_pool_provider.github"
+         transform="translate(280, 200)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>github — google_iam_workload_identity_pool_provider (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path d="M22,2 L22,22 L2,22 L2,2 L22,2 Z M12,6.61538462 C10.2131185,6.61538462 8.69051386,7.74688823 8.10959985,9.33248166 L8.10959985,9.33248166 L7.94899666,9.33277592 C5.93795979,9.33277592 4.30769231,10.9630434 4.30769231,12.9740803 C4.30769231,14.9851171 5.93795979,16.6153846 7.94899666,16.6153846 L7.94899666,16.6153846 L16.0510033,16.6153846 C18.0620402,16.6153846 19.6923077,14.9851171 19.6923077,12.9740803 C19.6923077,10.9630434 18.0620402,9.33277592 16.0510033,9.33277592 L16.0510033,9.33277592 L15.8904002,9.33248166 C15.3094861,7.74688823 13.7868815,6.61538462 12,6.61538462 Z" fill="#4285F4"></path></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">github</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">iam_workload_id…</text>
+          <text y="30" fill="#5F6368" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Google Cloud Reso…</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.github_oidc.google_project_iam_custom_role.cdn_invalidate"
+         transform="translate(500, 200)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>cdn_invalidate — google_project_iam_custom_role (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-iam-cls-1{fill:#669df6;}.tfarch-gcp-iam-cls-1,.tfarch-gcp-iam-cls-2{fill-rule:evenodd;}.tfarch-gcp-iam-cls-2{fill:#4285f4;}</style></defs><g data-name="Product Icons"><g ><path class="tfarch-gcp-iam-cls-1" d="M12,2,3.79,5.42v5.63c0,5.06,3.5,9.8,8.21,11,4.71-1.15,8.21-5.89,8.21-10.95V5.42Zm0,3.79a2.63,2.63,0,1,1-1.86.77A2.63,2.63,0,0,1,12,5.79Zm4.11,11.15A8.64,8.64,0,0,1,12,19.87a8.64,8.64,0,0,1-4.11-2.93V14.69c0-1.67,2.74-2.52,4.11-2.52s4.11.85,4.11,2.52v2.25Z"/><path class="tfarch-gcp-iam-cls-2" d="M12,2V5.79a2.63,2.63,0,1,1,0,5.26v1.12c1.37,0,4.11.85,4.11,2.52v2.25A8.64,8.64,0,0,1,12,19.87V22c4.71-1.15,8.21-5.89,8.21-10.95V5.42Z"/></g></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">cdn_invalidate</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">project_iam_cus…</text>
+          <text y="30" fill="#EA4335" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Cloud IAM</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.github_oidc.google_project_iam_member.cdn_invalidate"
+         transform="translate(720, 200)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>cdn_invalidate — google_project_iam_member (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-iam-cls-1{fill:#669df6;}.tfarch-gcp-iam-cls-1,.tfarch-gcp-iam-cls-2{fill-rule:evenodd;}.tfarch-gcp-iam-cls-2{fill:#4285f4;}</style></defs><g data-name="Product Icons"><g ><path class="tfarch-gcp-iam-cls-1" d="M12,2,3.79,5.42v5.63c0,5.06,3.5,9.8,8.21,11,4.71-1.15,8.21-5.89,8.21-10.95V5.42Zm0,3.79a2.63,2.63,0,1,1-1.86.77A2.63,2.63,0,0,1,12,5.79Zm4.11,11.15A8.64,8.64,0,0,1,12,19.87a8.64,8.64,0,0,1-4.11-2.93V14.69c0-1.67,2.74-2.52,4.11-2.52s4.11.85,4.11,2.52v2.25Z"/><path class="tfarch-gcp-iam-cls-2" d="M12,2V5.79a2.63,2.63,0,1,1,0,5.26v1.12c1.37,0,4.11.85,4.11,2.52v2.25A8.64,8.64,0,0,1,12,19.87V22c4.71-1.15,8.21-5.89,8.21-10.95V5.42Z"/></g></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">cdn_invalidate</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">project_iam_mem…</text>
+          <text y="30" fill="#EA4335" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Cloud IAM</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.github_oidc.google_secret_manager_secret_iam_member.deploy"
+         transform="translate(60, 304)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>deploy — google_secret_manager_secret_iam_member (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path d="M22,2 L22,22 L2,22 L2,2 L22,2 Z M12,6.61538462 C10.2131185,6.61538462 8.69051386,7.74688823 8.10959985,9.33248166 L8.10959985,9.33248166 L7.94899666,9.33277592 C5.93795979,9.33277592 4.30769231,10.9630434 4.30769231,12.9740803 C4.30769231,14.9851171 5.93795979,16.6153846 7.94899666,16.6153846 L7.94899666,16.6153846 L16.0510033,16.6153846 C18.0620402,16.6153846 19.6923077,14.9851171 19.6923077,12.9740803 C19.6923077,10.9630434 18.0620402,9.33277592 16.0510033,9.33277592 L16.0510033,9.33277592 L15.8904002,9.33248166 C15.3094861,7.74688823 13.7868815,6.61538462 12,6.61538462 Z" fill="#4285F4"></path></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">deploy</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">secret_manager_…</text>
+          <text y="30" fill="#5F6368" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Google Cloud Reso…</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.github_oidc.google_service_account.github"
+         transform="translate(280, 304)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>github — google_service_account (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-service_account-cls-1{fill:#669df6;}.tfarch-gcp-service_account-cls-1,.tfarch-gcp-service_account-cls-2{fill-rule:evenodd;}.tfarch-gcp-service_account-cls-2{fill:#4285f4;}</style></defs><g data-name="Product Icons"><g ><path class="tfarch-gcp-service_account-cls-1" d="M12,2,3.79,5.42v5.63c0,5.06,3.5,9.8,8.21,11,4.71-1.15,8.21-5.89,8.21-10.95V5.42Zm0,3.79a2.63,2.63,0,1,1-1.86.77A2.63,2.63,0,0,1,12,5.79Zm4.11,11.15A8.64,8.64,0,0,1,12,19.87a8.64,8.64,0,0,1-4.11-2.93V14.69c0-1.67,2.74-2.52,4.11-2.52s4.11.85,4.11,2.52v2.25Z"/><path class="tfarch-gcp-service_account-cls-2" d="M12,2V5.79a2.63,2.63,0,1,1,0,5.26v1.12c1.37,0,4.11.85,4.11,2.52v2.25A8.64,8.64,0,0,1,12,19.87V22c4.71-1.15,8.21-5.89,8.21-10.95V5.42Z"/></g></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">github</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">service_account</text>
+          <text y="30" fill="#EA4335" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Service Account</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.github_oidc.google_service_account_iam_member.wif"
+         transform="translate(500, 304)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>wif — google_service_account_iam_member (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-service_account-cls-1{fill:#669df6;}.tfarch-gcp-service_account-cls-1,.tfarch-gcp-service_account-cls-2{fill-rule:evenodd;}.tfarch-gcp-service_account-cls-2{fill:#4285f4;}</style></defs><g data-name="Product Icons"><g ><path class="tfarch-gcp-service_account-cls-1" d="M12,2,3.79,5.42v5.63c0,5.06,3.5,9.8,8.21,11,4.71-1.15,8.21-5.89,8.21-10.95V5.42Zm0,3.79a2.63,2.63,0,1,1-1.86.77A2.63,2.63,0,0,1,12,5.79Zm4.11,11.15A8.64,8.64,0,0,1,12,19.87a8.64,8.64,0,0,1-4.11-2.93V14.69c0-1.67,2.74-2.52,4.11-2.52s4.11.85,4.11,2.52v2.25Z"/><path class="tfarch-gcp-service_account-cls-2" d="M12,2V5.79a2.63,2.63,0,1,1,0,5.26v1.12c1.37,0,4.11.85,4.11,2.52v2.25A8.64,8.64,0,0,1,12,19.87V22c4.71-1.15,8.21-5.89,8.21-10.95V5.42Z"/></g></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">wif</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">service_account…</text>
+          <text y="30" fill="#EA4335" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Service Account</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.github_oidc.google_storage_bucket_iam_member.deploy"
+         transform="translate(720, 304)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>deploy — google_storage_bucket_iam_member (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-cloud_storage-cls-1{fill:#aecbfa;}.tfarch-gcp-cloud_storage-cls-2{fill:#669df6;}.tfarch-gcp-cloud_storage-cls-3{fill:#4285f4;}.tfarch-gcp-cloud_storage-cls-4{fill:#fff;}</style></defs><g data-name="Product Icons"><rect class="tfarch-gcp-cloud_storage-cls-1" x="2" y="4" width="20" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="20" y="4" width="2" height="7"/><polygon class="tfarch-gcp-cloud_storage-cls-3" points="22 4 20 4 20 11 22 4"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="2" y="4" width="2" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="6" y="7" width="6" height="1"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="15" y="6" width="3" height="3" rx="1.5"/><rect class="tfarch-gcp-cloud_storage-cls-1" x="2" y="13" width="20" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="20" y="13" width="2" height="7"/><polygon class="tfarch-gcp-cloud_storage-cls-3" points="22 13 20 13 20 20 22 13"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="2" y="13" width="2" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="6" y="16" width="6" height="1"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="15" y="15" width="3" height="3" rx="1.5"/></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">deploy</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">storage_bucket_…</text>
+          <text y="30" fill="#F9AB00" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Cloud Storage</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.web_app.google_compute_backend_bucket.site"
+         transform="translate(60, 408)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>site — google_compute_backend_bucket (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-cloud_cdn-cls-1{fill:none;}.tfarch-gcp-cloud_cdn-cls-2{fill:#669df6;}.tfarch-gcp-cloud_cdn-cls-2,.tfarch-gcp-cloud_cdn-cls-3,.tfarch-gcp-cloud_cdn-cls-4{fill-rule:evenodd;}.tfarch-gcp-cloud_cdn-cls-3{fill:#aecbfa;}.tfarch-gcp-cloud_cdn-cls-4{fill:#4285f4;}</style></defs><g data-name="Product Icons"><rect class="tfarch-gcp-cloud_cdn-cls-1" x="2" y="2" width="20" height="20"/><g ><polygon id="tfarch-gcp-cloud_cdn-Fill-1" class="tfarch-gcp-cloud_cdn-cls-2" points="12 2 12 4.41 15.13 7.63 15.13 5.21 12 2"/><polygon id="tfarch-gcp-cloud_cdn-Fill-1-Copy-2" class="tfarch-gcp-cloud_cdn-cls-2" points="19.5 12 16.38 15.13 18.88 15.13 22 12 19.5 12"/><polygon id="tfarch-gcp-cloud_cdn-Fill-1-Copy-3" class="tfarch-gcp-cloud_cdn-cls-2" points="4.5 12 7.63 15.13 5.13 15.13 2 12 4.5 12"/><polygon id="tfarch-gcp-cloud_cdn-Fill-1-Copy" class="tfarch-gcp-cloud_cdn-cls-2" points="12 22 12 19.59 15.13 16.38 15.13 18.79 12 22"/><polygon id="tfarch-gcp-cloud_cdn-Fill-2" class="tfarch-gcp-cloud_cdn-cls-3" points="12 2 8.88 5.21 8.88 7.63 12 4.41 12 2"/><polygon id="tfarch-gcp-cloud_cdn-Fill-2-Copy-2" class="tfarch-gcp-cloud_cdn-cls-3" points="18.88 8.88 16.38 8.88 19.5 12 22 12 18.88 8.88"/><polygon id="tfarch-gcp-cloud_cdn-Fill-2-Copy-3" class="tfarch-gcp-cloud_cdn-cls-3" points="5.13 8.88 7.63 8.88 4.5 12 2 12 5.13 8.88"/><polygon id="tfarch-gcp-cloud_cdn-Fill-2-Copy" class="tfarch-gcp-cloud_cdn-cls-3" points="12 22 8.88 18.79 8.88 16.38 12 19.59 12 22"/><polygon id="tfarch-gcp-cloud_cdn-Fill-9" class="tfarch-gcp-cloud_cdn-cls-3" points="15.13 15.13 8.88 15.13 8.88 8.88 15.13 8.88 15.13 15.13"/><polygon id="tfarch-gcp-cloud_cdn-Fill-10" class="tfarch-gcp-cloud_cdn-cls-2" points="15.13 8.88 15.13 15.13 8.88 15.13 15.13 8.88"/><polygon class="tfarch-gcp-cloud_cdn-cls-4" points="15.13 8.88 15.13 15.13 12 12 15.13 8.88"/></g></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">site</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">compute_backend…</text>
+          <text y="30" fill="#34A853" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Cloud CDN</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.web_app.google_compute_global_address.site"
+         transform="translate(280, 408)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>site — google_compute_global_address (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-vpc_network-cls-1{fill:#aecbfa;}.tfarch-gcp-vpc_network-cls-2{fill:#669df6;}.tfarch-gcp-vpc_network-cls-3{fill:#4285f4;}</style></defs><g data-name="Product Icons"><rect class="tfarch-gcp-vpc_network-cls-1" x="16" y="2" width="6" height="6"/><rect class="tfarch-gcp-vpc_network-cls-2" x="19" y="2" width="3" height="6"/><rect class="tfarch-gcp-vpc_network-cls-1" x="16" y="16" width="6" height="6"/><rect class="tfarch-gcp-vpc_network-cls-2" x="19" y="16" width="3" height="6"/><rect class="tfarch-gcp-vpc_network-cls-1" x="2" y="2" width="6" height="6"/><rect class="tfarch-gcp-vpc_network-cls-2" x="5" y="2" width="3" height="6"/><rect class="tfarch-gcp-vpc_network-cls-1" x="2" y="16" width="6" height="6"/><rect class="tfarch-gcp-vpc_network-cls-2" x="5" y="16" width="3" height="6"/><rect class="tfarch-gcp-vpc_network-cls-2" x="8" y="4" width="8" height="2"/><rect class="tfarch-gcp-vpc_network-cls-2" x="8" y="18" width="8" height="2"/><rect class="tfarch-gcp-vpc_network-cls-2" x="18" y="8" width="2" height="8"/><rect class="tfarch-gcp-vpc_network-cls-2" x="4" y="8" width="2" height="8"/><rect class="tfarch-gcp-vpc_network-cls-3" x="4" y="8" width="2" height="2"/><rect class="tfarch-gcp-vpc_network-cls-3" x="18" y="8" width="2" height="2"/><rect class="tfarch-gcp-vpc_network-cls-3" x="8" y="4" width="2" height="2"/><rect class="tfarch-gcp-vpc_network-cls-3" x="8" y="18" width="2" height="2"/></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">site</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">compute_global_…</text>
+          <text y="30" fill="#34A853" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">VPC Network</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.web_app.google_compute_global_forwarding_rule.http"
+         transform="translate(60, 60)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>http — google_compute_global_forwarding_rule (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-load_balancer-cls-1{fill:none;}.tfarch-gcp-load_balancer-cls-2{fill:#669df6;}.tfarch-gcp-load_balancer-cls-3{fill:#4285f4;}.tfarch-gcp-load_balancer-cls-4{fill:#aecbfa;}</style></defs><g data-name="Product Icons"><g data-name="colored-32/load-balancing"><rect class="tfarch-gcp-load_balancer-cls-1" width="24" height="24"/><g ><rect class="tfarch-gcp-load_balancer-cls-2" x="18" y="12" width="2" height="4"/><rect class="tfarch-gcp-load_balancer-cls-2" x="11" y="12" width="2" height="4"/><rect class="tfarch-gcp-load_balancer-cls-2" x="4" y="12" width="2" height="4"/><polygon id="tfarch-gcp-load_balancer-Fill-2" class="tfarch-gcp-load_balancer-cls-3" points="13 11 11 11 11 7 13 7 13 11"/><rect class="tfarch-gcp-load_balancer-cls-2" x="4" y="11" width="16" height="2"/><rect class="tfarch-gcp-load_balancer-cls-4" x="6" y="2" width="12" height="5"/><rect class="tfarch-gcp-load_balancer-cls-2" x="12" y="2" width="6" height="5"/><rect class="tfarch-gcp-load_balancer-cls-4" x="16" y="16" width="6" height="6"/><rect class="tfarch-gcp-load_balancer-cls-4" x="2" y="16" width="6" height="6"/><rect class="tfarch-gcp-load_balancer-cls-2" x="5" y="16" width="3" height="6"/><rect class="tfarch-gcp-load_balancer-cls-4" x="9" y="16" width="6" height="6"/><rect class="tfarch-gcp-load_balancer-cls-2" x="12" y="16" width="3" height="6"/><rect class="tfarch-gcp-load_balancer-cls-2" x="19" y="16" width="3" height="6"/></g></g></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">http</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">compute_global_…</text>
+          <text y="30" fill="#34A853" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Cloud Load Balanc…</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.web_app.google_compute_target_http_proxy.site"
+         transform="translate(280, 60)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>site — google_compute_target_http_proxy (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-load_balancer-cls-1{fill:none;}.tfarch-gcp-load_balancer-cls-2{fill:#669df6;}.tfarch-gcp-load_balancer-cls-3{fill:#4285f4;}.tfarch-gcp-load_balancer-cls-4{fill:#aecbfa;}</style></defs><g data-name="Product Icons"><g data-name="colored-32/load-balancing"><rect class="tfarch-gcp-load_balancer-cls-1" width="24" height="24"/><g ><rect class="tfarch-gcp-load_balancer-cls-2" x="18" y="12" width="2" height="4"/><rect class="tfarch-gcp-load_balancer-cls-2" x="11" y="12" width="2" height="4"/><rect class="tfarch-gcp-load_balancer-cls-2" x="4" y="12" width="2" height="4"/><polygon id="tfarch-gcp-load_balancer-Fill-2" class="tfarch-gcp-load_balancer-cls-3" points="13 11 11 11 11 7 13 7 13 11"/><rect class="tfarch-gcp-load_balancer-cls-2" x="4" y="11" width="16" height="2"/><rect class="tfarch-gcp-load_balancer-cls-4" x="6" y="2" width="12" height="5"/><rect class="tfarch-gcp-load_balancer-cls-2" x="12" y="2" width="6" height="5"/><rect class="tfarch-gcp-load_balancer-cls-4" x="16" y="16" width="6" height="6"/><rect class="tfarch-gcp-load_balancer-cls-4" x="2" y="16" width="6" height="6"/><rect class="tfarch-gcp-load_balancer-cls-2" x="5" y="16" width="3" height="6"/><rect class="tfarch-gcp-load_balancer-cls-4" x="9" y="16" width="6" height="6"/><rect class="tfarch-gcp-load_balancer-cls-2" x="12" y="16" width="3" height="6"/><rect class="tfarch-gcp-load_balancer-cls-2" x="19" y="16" width="3" height="6"/></g></g></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">site</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">compute_target_…</text>
+          <text y="30" fill="#34A853" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Cloud Load Balanc…</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.web_app.google_compute_url_map.site"
+         transform="translate(500, 60)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>site — google_compute_url_map (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-load_balancer-cls-1{fill:none;}.tfarch-gcp-load_balancer-cls-2{fill:#669df6;}.tfarch-gcp-load_balancer-cls-3{fill:#4285f4;}.tfarch-gcp-load_balancer-cls-4{fill:#aecbfa;}</style></defs><g data-name="Product Icons"><g data-name="colored-32/load-balancing"><rect class="tfarch-gcp-load_balancer-cls-1" width="24" height="24"/><g ><rect class="tfarch-gcp-load_balancer-cls-2" x="18" y="12" width="2" height="4"/><rect class="tfarch-gcp-load_balancer-cls-2" x="11" y="12" width="2" height="4"/><rect class="tfarch-gcp-load_balancer-cls-2" x="4" y="12" width="2" height="4"/><polygon id="tfarch-gcp-load_balancer-Fill-2" class="tfarch-gcp-load_balancer-cls-3" points="13 11 11 11 11 7 13 7 13 11"/><rect class="tfarch-gcp-load_balancer-cls-2" x="4" y="11" width="16" height="2"/><rect class="tfarch-gcp-load_balancer-cls-4" x="6" y="2" width="12" height="5"/><rect class="tfarch-gcp-load_balancer-cls-2" x="12" y="2" width="6" height="5"/><rect class="tfarch-gcp-load_balancer-cls-4" x="16" y="16" width="6" height="6"/><rect class="tfarch-gcp-load_balancer-cls-4" x="2" y="16" width="6" height="6"/><rect class="tfarch-gcp-load_balancer-cls-2" x="5" y="16" width="3" height="6"/><rect class="tfarch-gcp-load_balancer-cls-4" x="9" y="16" width="6" height="6"/><rect class="tfarch-gcp-load_balancer-cls-2" x="12" y="16" width="3" height="6"/><rect class="tfarch-gcp-load_balancer-cls-2" x="19" y="16" width="3" height="6"/></g></g></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">site</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">compute_url_map</text>
+          <text y="30" fill="#34A853" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Cloud Load Balanc…</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.web_app.google_secret_manager_secret.deploy"
+         transform="translate(500, 408)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>deploy — google_secret_manager_secret (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(2.000000, 6.000000)" fill="#4285F4" fill-rule="nonzero"><path d="M20,9.41469125e-14 L20,11.8867925 L16.0377358,11.8867925 C15.9335312,11.8867925 15.8490566,11.8023179 15.8490566,11.6981132 L15.8490566,10.5660377 C15.8490566,10.4618331 15.9335312,10.3773585 16.0377358,10.3773585 L18.4900566,10.377 L18.4900566,1.509 L16.0377358,1.50943396 C15.9335312,1.50943396 15.8490566,1.42495939 15.8490566,1.32075472 L15.8490566,0.188679245 C15.8490566,0.0844745755 15.9335312,9.41105434e-14 16.0377358,9.41469125e-14 L20,9.41469125e-14 Z M4.309101,9.41469125e-14 C4.41330567,9.3877869e-14 4.49778024,0.0844745755 4.49778024,0.188679245 L4.49778024,1.32075472 C4.49778024,1.42495939 4.41330567,1.50943396 4.309101,1.50943396 L1.509,1.509 L1.509,10.377 L4.29245283,10.3773585 C4.3966575,10.3773585 4.48113208,10.4618331 4.48113208,10.5660377 L4.48113208,11.6981132 C4.48113208,11.8023179 4.3966575,11.8867925 4.29245283,11.8867925 L2.14050999e-13,11.8867925 L2.14050999e-13,9.41469125e-14 L4.309101,9.41469125e-14 Z M15.4271098,3.86792453 L15.4271098,5.3240566 L15.4879305,5.34852941 L16.8381494,4.87130966 L17.1179245,5.69114872 L15.7555414,6.15613208 L15.719049,6.25402331 L16.6556874,7.51437292 L15.9501676,8.02830189 L15.0378575,6.76795228 L14.9527085,6.76795228 L14.0403984,8.02830189 L13.3348786,7.51437292 L14.2593529,6.25402331 L14.2350246,6.15613208 L12.8726415,5.69114872 L13.1524166,4.87130966 L14.4904714,5.34852941 L14.5634562,5.3240566 L14.5634562,3.86792453 L15.4271098,3.86792453 Z M5.19597773,3.86792453 L5.19597773,5.30963945 L5.2567984,5.33386996 L6.60701735,4.86137515 L6.88679245,5.673097 L5.52440936,6.13347656 L5.48791696,6.23039857 L6.42455533,7.47826947 L5.71903552,7.98711003 L4.80672541,6.73923913 L4.72157647,6.73923913 L3.80926637,7.98711003 L3.10374655,7.47826947 L4.02822079,6.23039857 L4.00389252,6.13347656 L2.64150943,5.673097 L2.92128453,4.86137515 L4.25933935,5.33386996 L4.33232416,5.30963945 L4.33232416,3.86792453 L5.19597773,3.86792453 Z M10.2903173,3.86792453 L10.2903173,5.30963945 L10.351138,5.33386996 L11.701357,4.86137515 L11.9811321,5.673097 L10.618749,6.13347656 L10.5822566,6.23039857 L11.518895,7.47826947 L10.8133751,7.98711003 L9.90106504,6.73923913 L9.81591609,6.73923913 L8.90360599,7.98711003 L8.19808618,7.47826947 L9.12256042,6.23039857 L9.09823215,6.13347656 L7.73584906,5.673097 L8.01562416,4.86137515 L9.35367897,5.33386996 L9.42666378,5.30963945 L9.42666378,3.86792453 L10.2903173,3.86792453 Z" ></path></g></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">deploy</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">secret_manager_…</text>
+          <text y="30" fill="#EA4335" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Secret Manager</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.web_app.google_secret_manager_secret_version.deploy"
+         transform="translate(720, 408)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>deploy — google_secret_manager_secret_version (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(2.000000, 6.000000)" fill="#4285F4" fill-rule="nonzero"><path d="M20,9.41469125e-14 L20,11.8867925 L16.0377358,11.8867925 C15.9335312,11.8867925 15.8490566,11.8023179 15.8490566,11.6981132 L15.8490566,10.5660377 C15.8490566,10.4618331 15.9335312,10.3773585 16.0377358,10.3773585 L18.4900566,10.377 L18.4900566,1.509 L16.0377358,1.50943396 C15.9335312,1.50943396 15.8490566,1.42495939 15.8490566,1.32075472 L15.8490566,0.188679245 C15.8490566,0.0844745755 15.9335312,9.41105434e-14 16.0377358,9.41469125e-14 L20,9.41469125e-14 Z M4.309101,9.41469125e-14 C4.41330567,9.3877869e-14 4.49778024,0.0844745755 4.49778024,0.188679245 L4.49778024,1.32075472 C4.49778024,1.42495939 4.41330567,1.50943396 4.309101,1.50943396 L1.509,1.509 L1.509,10.377 L4.29245283,10.3773585 C4.3966575,10.3773585 4.48113208,10.4618331 4.48113208,10.5660377 L4.48113208,11.6981132 C4.48113208,11.8023179 4.3966575,11.8867925 4.29245283,11.8867925 L2.14050999e-13,11.8867925 L2.14050999e-13,9.41469125e-14 L4.309101,9.41469125e-14 Z M15.4271098,3.86792453 L15.4271098,5.3240566 L15.4879305,5.34852941 L16.8381494,4.87130966 L17.1179245,5.69114872 L15.7555414,6.15613208 L15.719049,6.25402331 L16.6556874,7.51437292 L15.9501676,8.02830189 L15.0378575,6.76795228 L14.9527085,6.76795228 L14.0403984,8.02830189 L13.3348786,7.51437292 L14.2593529,6.25402331 L14.2350246,6.15613208 L12.8726415,5.69114872 L13.1524166,4.87130966 L14.4904714,5.34852941 L14.5634562,5.3240566 L14.5634562,3.86792453 L15.4271098,3.86792453 Z M5.19597773,3.86792453 L5.19597773,5.30963945 L5.2567984,5.33386996 L6.60701735,4.86137515 L6.88679245,5.673097 L5.52440936,6.13347656 L5.48791696,6.23039857 L6.42455533,7.47826947 L5.71903552,7.98711003 L4.80672541,6.73923913 L4.72157647,6.73923913 L3.80926637,7.98711003 L3.10374655,7.47826947 L4.02822079,6.23039857 L4.00389252,6.13347656 L2.64150943,5.673097 L2.92128453,4.86137515 L4.25933935,5.33386996 L4.33232416,5.30963945 L4.33232416,3.86792453 L5.19597773,3.86792453 Z M10.2903173,3.86792453 L10.2903173,5.30963945 L10.351138,5.33386996 L11.701357,4.86137515 L11.9811321,5.673097 L10.618749,6.13347656 L10.5822566,6.23039857 L11.518895,7.47826947 L10.8133751,7.98711003 L9.90106504,6.73923913 L9.81591609,6.73923913 L8.90360599,7.98711003 L8.19808618,7.47826947 L9.12256042,6.23039857 L9.09823215,6.13347656 L7.73584906,5.673097 L8.01562416,4.86137515 L9.35367897,5.33386996 L9.42666378,5.30963945 L9.42666378,3.86792453 L10.2903173,3.86792453 Z" ></path></g></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">deploy</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">secret_manager_…</text>
+          <text y="30" fill="#EA4335" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Secret Manager</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.web_app.google_storage_bucket.site"
+         transform="translate(60, 512)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>site — google_storage_bucket (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-cloud_storage-cls-1{fill:#aecbfa;}.tfarch-gcp-cloud_storage-cls-2{fill:#669df6;}.tfarch-gcp-cloud_storage-cls-3{fill:#4285f4;}.tfarch-gcp-cloud_storage-cls-4{fill:#fff;}</style></defs><g data-name="Product Icons"><rect class="tfarch-gcp-cloud_storage-cls-1" x="2" y="4" width="20" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="20" y="4" width="2" height="7"/><polygon class="tfarch-gcp-cloud_storage-cls-3" points="22 4 20 4 20 11 22 4"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="2" y="4" width="2" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="6" y="7" width="6" height="1"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="15" y="6" width="3" height="3" rx="1.5"/><rect class="tfarch-gcp-cloud_storage-cls-1" x="2" y="13" width="20" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="20" y="13" width="2" height="7"/><polygon class="tfarch-gcp-cloud_storage-cls-3" points="22 13 20 13 20 20 22 13"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="2" y="13" width="2" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="6" y="16" width="6" height="1"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="15" y="15" width="3" height="3" rx="1.5"/></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">site</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">storage_bucket</text>
+          <text y="30" fill="#F9AB00" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Cloud Storage</text>
+        </g>
+      </g>
+    
+      <g class="diagram-node"
+         data-id="module.web_app.google_storage_bucket_iam_member.public[0]"
+         transform="translate(280, 512)"
+         opacity="1"
+         style="cursor: pointer;">
+        <title>public — google_storage_bucket_iam_member (create)</title>
+        <rect class="node-card" width="180" height="80" rx="10"
+              fill="#111827"
+              stroke="rgba(16, 185, 129, 0.5)"
+              stroke-width="1.5"
+              filter="url(#node-shadow)"/>
+        <circle cx="166" cy="14" r="7" fill="#10b981" />
+        <text x="166" y="17.5" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+</text>
+        <rect x="10" y="19" width="42" height="42" rx="7" fill="#f8fafc"/>
+        <g transform="translate(17, 26)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28"><defs><style>.tfarch-gcp-cloud_storage-cls-1{fill:#aecbfa;}.tfarch-gcp-cloud_storage-cls-2{fill:#669df6;}.tfarch-gcp-cloud_storage-cls-3{fill:#4285f4;}.tfarch-gcp-cloud_storage-cls-4{fill:#fff;}</style></defs><g data-name="Product Icons"><rect class="tfarch-gcp-cloud_storage-cls-1" x="2" y="4" width="20" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="20" y="4" width="2" height="7"/><polygon class="tfarch-gcp-cloud_storage-cls-3" points="22 4 20 4 20 11 22 4"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="2" y="4" width="2" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="6" y="7" width="6" height="1"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="15" y="6" width="3" height="3" rx="1.5"/><rect class="tfarch-gcp-cloud_storage-cls-1" x="2" y="13" width="20" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="20" y="13" width="2" height="7"/><polygon class="tfarch-gcp-cloud_storage-cls-3" points="22 13 20 13 20 20 22 13"/><rect class="tfarch-gcp-cloud_storage-cls-2" x="2" y="13" width="2" height="7"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="6" y="16" width="6" height="1"/><rect class="tfarch-gcp-cloud_storage-cls-4" x="15" y="15" width="3" height="3" rx="1.5"/></g></svg></g>
+        <g transform="translate(56, 26)">
+          <text fill="#f8fafc" font-size="12" font-weight="700" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">public</text>
+          <text y="16" fill="#94a3b8" font-size="9.5" font-family="'JetBrains Mono', ui-monospace, monospace">storage_bucket_…</text>
+          <text y="30" fill="#F9AB00" font-size="8.5" font-weight="600" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Cloud Storage</text>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g class="legend">
+      <circle cx="46" cy="668" r="5" fill="#10b981"/>
+      <text x="58" y="672" fill="#94a3b8" font-size="11" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Create (+)</text>
+    
+      <circle cx="176" cy="668" r="5" fill="#f59e0b"/>
+      <text x="188" y="672" fill="#94a3b8" font-size="11" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Modify (~)</text>
+    
+      <circle cx="306" cy="668" r="5" fill="#ef4444"/>
+      <text x="318" y="672" fill="#94a3b8" font-size="11" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Destroy (-)</text>
+    
+      <circle cx="436" cy="668" r="5" fill="#64748b"/>
+      <text x="448" y="672" fill="#94a3b8" font-size="11" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif">Unchanged</text>
+    </g>
+</svg>
