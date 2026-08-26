@@ -1,13 +1,13 @@
 # Manideep Chittineni — Portfolio
 
-A fast, statically-generated personal portfolio for a Cloud & DevOps engineer,
-built with **Nuxt 3** and **Tailwind CSS v4**, deployed to **GitHub Pages** (with
+A statically-generated personal portfolio for a Cloud & Platform engineer, built
+with **Nuxt 4** and **Tailwind CSS v4**, deployed to **GitHub Pages** (with
 alternative **AWS / Azure / GCP** CDN paths) via **GitHub Actions**.
 
-![Nuxt](https://img.shields.io/badge/Nuxt-3-00DC82?logo=nuxt.js&logoColor=white)
+![Nuxt](https://img.shields.io/badge/Nuxt-4-00DC82?logo=nuxt.js&logoColor=white)
 ![Vue](https://img.shields.io/badge/Vue-3-4FC08D?logo=vue.js&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-S3_%2B_CloudFront-FF9900?logo=amazonaws&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-coverage_%E2%89%A590%25-6E9F18?logo=vitest&logoColor=white)
 
 > **Single source of truth: npm.** Use `package-lock.json` only — do not add
 > other lockfiles (`pnpm-lock.yaml` / `yarn.lock`).
@@ -18,70 +18,21 @@ alternative **AWS / Azure / GCP** CDN paths) via **GitHub Actions**.
 
 - [Overview](#overview)
 - [Tech stack](#tech-stack)
-- [Architecture](#architecture)
 - [Project structure](#project-structure)
 - [Getting started](#getting-started)
 - [Available scripts](#available-scripts)
+- [Testing](#testing)
 - [Editing content](#editing-content)
-- [Code style & quality](#code-style--quality)
 - [Building for production](#building-for-production)
 - [Deployment](#deployment)
-- [Accessibility, SEO & performance](#accessibility-seo--performance)
-- [Roadmap](#roadmap)
 
 ---
 
 ## Overview
 
-This is a single-page site with anchor-navigated sections — **About / Hero**,
-**Skills**, **Experience**, and **Contact**. It is rendered ahead of time with
-Nuxt's static generation (`nuxt generate`), so the deployed artifact is plain
-HTML/CSS/JS with no server runtime. The design is a dark, glassmorphism theme
-with a single indigo→cyan accent, lightweight scroll-reveal animations
-(progressive enhancement — content remains fully visible without JavaScript),
-and a responsive nav with a mobile menu.
-
-## Tech stack
-
-| Layer         | Choice                                                                                                                    |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Framework     | [Nuxt 3](https://nuxt.com) (Vue 3, `<script setup>`)                                                                      |
-| Rendering     | Static Site Generation (Nitro `static` preset, all routes prerendered)                                                    |
-| Styling       | [Tailwind CSS v4](https://tailwindcss.com) via `@nuxtjs/tailwindcss` + a plain-CSS design system in `assets/css/main.css` |
-| Fonts         | Inter (Google Fonts, preconnected)                                                                                        |
-| Hosting       | **GitHub Pages** (primary), or **AWS / Azure / GCP** CDN (alternatives; see [`infra/`](infra/))                           |
-| Edge security | WAF (AWS/Azure), TLS 1.2+, security response headers + **CSP**, encrypted deploy secret                                   |
-| CI/CD         | **GitHub Actions** with OIDC across all clouds (no long-lived keys); CI gate + gitleaks + Dependabot                      |
-| IaC           | **CloudFormation** (AWS) _and_ **Terraform** for all three clouds (see [`infra/`](infra/))                                |
-| Tooling       | Prettier, PostCSS, Autoprefixer                                                                                           |
-
-## Architecture
-
-```mermaid
-flowchart LR
-  Dev[Local dev<br/>nuxt dev] --> Repo[(GitHub repo)]
-  Repo -->|workflow_dispatch| GHA[GitHub Actions<br/>deploy_prod.yml]
-  GHA -->|OIDC AssumeRole| Role[IAM role<br/>least-privilege]
-  GHA -->|read| SM[Secrets Manager<br/>+ KMS]
-  GHA -->|nuxt generate| Build[.output/public]
-  Build -->|s3 sync --delete| S3[(Private S3 bucket)]
-  GHA -->|invalidate| CF[CloudFront + WAF]
-  CF -->|OAC GetObject| S3
-  User([Visitor]) -->|HTTPS| CF
-```
-
-The deploy job builds the static site, syncs it to the private S3 bucket, and
-invalidates the CloudFront cache. CloudFront reads from S3 using Origin Access
-Control (OAC); the bucket itself blocks all public access. The **Azure** (Storage
-Account and Front Door) and **GCP** (Cloud Storage and Cloud CDN) paths are
-equivalent — private origin → CDN → edge security headers, deployed by the same
-workflow. Full per-cloud details — parameters, deploy order, and security
-posture — are in [`infra/README.md`](infra/README.md).
-
-## Project structure
-
-The site ships **six interfaces over one dataset**. All content lives in
-`content/`, so no interface owns it and none can drift from another.
+The site ships **six interfaces over one dataset**. Everything renders ahead of
+time with `nuxt generate`, so the deployed artifact is plain HTML/CSS/JS with no
+server runtime.
 
 | Route       | Interface     | What it is                                                               |
 | ----------- | ------------- | ------------------------------------------------------------------------ |
@@ -93,18 +44,35 @@ The site ships **six interfaces over one dataset**. All content lives in
 | `/terminal` | Terminal      | A real shell: history, completion, pipes, shareable commands.            |
 | `/modes`    | Chooser       | All six side by side, with number-key shortcuts. Linked from every page. |
 
-A first-time visitor gets a boot gate offering all six. It is a client-only
-overlay rendered after mount, so the prerendered HTML never contains it and
-crawlers, link previews and no-JS visitors always land on the portfolio itself.
-After that first visit the gate never returns; `/modes` is the durable way back
-to the full choice, reachable from the floating switcher on every interface.
+All content lives in `content/`, so no interface owns it and none can drift from
+another. A first-time visitor gets a boot gate offering all six; it is a
+client-only overlay rendered after mount, so the prerendered HTML never contains
+it and crawlers, link previews and no-JS visitors always land on the portfolio
+itself. After that first visit the gate never returns — `/modes` is the durable
+way back, reachable from the floating switcher on every interface.
+
+## Tech stack
+
+| Layer     | Choice                                                                                                                    |
+| --------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Framework | [Nuxt 4](https://nuxt.com) (Vue 3, `<script setup>`)                                                                      |
+| Rendering | Static Site Generation (Nitro `static` preset, all routes prerendered)                                                    |
+| Styling   | [Tailwind CSS v4](https://tailwindcss.com) via `@nuxtjs/tailwindcss` + a plain-CSS design system in `assets/css/main.css` |
+| Testing   | [Vitest](https://vitest.dev) + `@nuxt/test-utils` + Vue Test Utils, v8 coverage gated at 90%                              |
+| Hosting   | **GitHub Pages** (primary), or **AWS / Azure / GCP** CDN (alternatives; see [`infra/`](infra/))                           |
+| CI/CD     | **GitHub Actions** with OIDC across all clouds (no long-lived keys); format + unit tests + audit + gitleaks + Dependabot  |
+| IaC       | **CloudFormation** (AWS) _and_ **Terraform** for all three clouds (see [`infra/`](infra/))                                |
+| Tooling   | Prettier, PostCSS, Autoprefixer                                                                                           |
+
+## Project structure
 
 ```
 .
-├── app.vue                     # <NuxtLayout><NuxtPage /></NuxtLayout>
+├── app.vue                     # <NuxtLayout><NuxtPage /></NuxtLayout> + <BootGate />
 ├── nuxt.config.ts              # SSG config, prerendered routes, <head> (SEO/OG/Twitter)
+├── vitest.config.ts            # Nuxt test environment + coverage thresholds
 ├── assets/css/main.css         # Design system: tokens, components, animations
-├── content/                    # Single source of truth for all three interfaces
+├── content/                    # Single source of truth for every interface
 │   ├── profile.ts              # Identity, stats, contact details, socials
 │   ├── experience.ts           # Roles
 │   ├── projects.ts             # Repositories + language palette
@@ -112,48 +80,37 @@ to the full choice, reachable from the floating switcher on every interface.
 │   └── index.ts                # Re-exports + platform projections (deployments, events…)
 ├── layouts/
 │   ├── default.vue             # Marketing chrome: nav (+ mobile menu), footer
-│   └── bare.vue                # Full-viewport shell for console/terminal
-├── pages/
-│   ├── index.vue               # The scroll portfolio
-│   ├── modes.vue               # Chooser: all six interfaces, 1–6 shortcuts
-│   ├── console.vue             # Control plane: resources, ⌘K palette, deep-linkable views
-│   ├── cloud.vue               # Multi-cloud: per-vendor tabs, chrome reskin, filtered content
-│   ├── agent.vue               # Agent: scripted tool-call traces over content/
-│   ├── ide.vue                 # Editor: explorer, tabs, integrated terminal
-│   └── terminal.vue            # Shell UI
+│   └── bare.vue                # Full-viewport shell for the other interfaces
+├── pages/                      # index, modes, console, cloud, agent, ide, terminal
 ├── components/
 │   ├── AboutSection.vue        # Hero (id="about")
 │   ├── SkillsSection.vue       # Skills, proficiency, certifications
 │   ├── ExperienceSection.vue   # Work timeline
-│   ├── ProjectsSection.vue     # Filterable repositories
+│   ├── ProjectsSection.vue     # Filterable repositories, source + live-demo links
 │   ├── ContactSection.vue      # Contact form (mailto) + info + socials
 │   ├── BootGate.vue            # First-visit interface chooser (client-only)
-│   ├── ModeSwitcher.vue        # Menu across all six interfaces
+│   ├── ModeSwitcher.vue        # Menu across all six interfaces + theme toggle
 │   └── console/                # ResourceTable, DescribePane, StatusPill, LangBar
 ├── composables/
-│   ├── useMode.ts              # Mode detection + persistence
-│   └── useShell.ts             # Shell engine: parser, pipes, history, completion
+│   ├── useMode.ts              # Interface detection + persistence
+│   ├── useShell.ts             # Shell engine: parser, pipes, history, completion
+│   └── useTheme.ts             # Light / dark / system, persisted per visitor
 ├── utils/commands.ts           # Terminal command allowlist
-├── plugins/
-│   └── reveal.client.ts        # IntersectionObserver scroll-reveal (client-only)
+├── plugins/reveal.client.ts    # IntersectionObserver scroll-reveal (client-only)
+├── test/                       # Vitest specs, mirroring the source tree
 ├── public/                     # Served as-is: profile.jpg, resume PDF, robots.txt, .nojekyll
 ├── infra/                      # IaC per cloud: AWS/ (CFN + Terraform), Azure/, GCP/ (Terraform)
 └── .github/
-    ├── dependabot.yml          # Weekly npm + github-actions update PRs
+    ├── dependabot.yml          # Semiannual npm + github-actions update PRs
     └── workflows/
-        ├── ci.yml              # PR/push gate: format, build, npm audit, gitleaks
+        ├── ci.yml              # PR/push gate: format, unit tests, build, npm audit, gitleaks
         ├── deploy_pages.yml    # Auto deploy to GitHub Pages (push to main)
         └── deploy_prod.yml     # Manual deploy → AWS / Azure / GCP (toggleable)
 ```
 
 ## Getting started
 
-### Prerequisites
-
-- **Node.js 24.x** (matches the CI runner)
-- **npm** (ships with Node)
-
-### Install & run
+Requires **Node.js 24.x** (matching the CI runner) and npm.
 
 ```bash
 npm ci          # install exact, locked dependencies
@@ -162,34 +119,59 @@ npm run dev     # start the dev server at http://localhost:3000
 
 ## Available scripts
 
-| Script                 | Description                                                      |
-| ---------------------- | ---------------------------------------------------------------- |
-| `npm run dev`          | Start the Nuxt dev server with HMR on `:3000`                    |
-| `npm run build`        | Build the app (server + client bundles)                          |
-| `npm run generate`     | **Prerender the static site** into `.output/public` (used by CI) |
-| `npm run preview`      | Locally preview the built output                                 |
-| `npm run format`       | Format the codebase with Prettier                                |
-| `npm run format:check` | Verify formatting (CI gate; non-zero on drift)                   |
+| Script                  | Description                                                      |
+| ----------------------- | ---------------------------------------------------------------- |
+| `npm run dev`           | Start the Nuxt dev server with HMR on `:3000`                    |
+| `npm run build`         | Build the app (server + client bundles)                          |
+| `npm run generate`      | **Prerender the static site** into `.output/public` (used by CI) |
+| `npm run preview`       | Locally preview the built output                                 |
+| `npm test`              | Run the unit suite once                                          |
+| `npm run test:watch`    | Run the unit suite in watch mode                                 |
+| `npm run test:coverage` | Run the suite with coverage and enforce the 90% thresholds       |
+| `npm run format`        | Format the codebase with Prettier                                |
+| `npm run format:check`  | Verify formatting (CI gate; non-zero on drift)                   |
+
+## Testing
+
+Unit tests run on **Vitest** in the `nuxt` environment (`@nuxt/test-utils`), so
+specs get the same auto-imports, `~` aliases and runtime config the app itself
+runs on — there is no hand-maintained mock layer. Components and pages are
+mounted with `mountSuspended`; DOM is happy-dom.
+
+```bash
+npm test                 # whole suite
+npm test -- test/utils   # one directory
+npm run test:coverage    # + coverage, fails below 90%
+```
+
+`test/setup.ts` fills the two gaps in the test window — `localStorage` (which
+happy-dom declares but never wires up) and auto-unmounting components between
+specs, so one page's key handlers cannot leak into the next.
+
+Coverage thresholds are enforced in [`vitest.config.ts`](vitest.config.ts) at
+**90%** for statements, branches, functions and lines across `components/`,
+`composables/`, `content/`, `layouts/`, `pages/`, `plugins/` and `utils/`. Every
+workflow that builds the site runs `npm run test:coverage` first, so a failing
+test blocks CI, the Pages deploy and the production deploy alike.
 
 ## Editing content
 
-Section content is **data-driven** — edit the arrays in `<script setup>` rather
-than the markup:
+Content is **data-driven** and lives entirely in `content/` — edit the arrays
+there rather than the markup. The console, cloud, agent, editor and terminal
+interfaces all derive their views from the same records, so one edit updates
+every interface.
 
-| To change…                                   | Edit                                                                                                                         |
-| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Name, hero tagline, headline stats           | [`components/AboutSection.vue`](components/AboutSection.vue)                                                                 |
-| Skills, proficiency bars, certifications     | the `categories` / `proficiency` / `certifications` arrays in [`components/SkillsSection.vue`](components/SkillsSection.vue) |
-| Roles, dates, metrics, bullet points         | the `jobs` array in [`components/ExperienceSection.vue`](components/ExperienceSection.vue)                                   |
-| Email, location, social links                | the `details` / `socials` arrays in [`components/ContactSection.vue`](components/ContactSection.vue) and `app.vue`           |
-| Page `<title>`, description, OG/Twitter tags | [`nuxt.config.ts`](nuxt.config.ts)                                                                                           |
-| Résumé PDF / profile photo                   | replace files in [`public/`](public/) (keep the same filenames)                                                              |
+| To change…                                      | Edit                                                   |
+| ----------------------------------------------- | ------------------------------------------------------ |
+| Name, summary, headline stats, contact, socials | [`content/profile.ts`](content/profile.ts)             |
+| Roles, dates, metrics, bullet points            | [`content/experience.ts`](content/experience.ts)       |
+| Repositories, categories, demo links, languages | [`content/projects.ts`](content/projects.ts)           |
+| Skill pools, proficiency bars, certifications   | [`content/skills.ts`](content/skills.ts)               |
+| Page `<title>`, description, OG/Twitter tags    | [`nuxt.config.ts`](nuxt.config.ts)                     |
+| Résumé PDF / profile photo                      | replace files in [`public/`](public/) (same filenames) |
 
-## Code style & quality
-
-Formatting is enforced with **Prettier** (config in `.prettierrc`,
-`.prettierignore`). Run `npm run format` before committing; CI runs
-`npm run format:check` and fails the deploy on any unformatted file.
+Formatting is enforced with **Prettier** (`.prettierrc`, `.prettierignore`). Run
+`npm run format` before committing; CI runs `npm run format:check`.
 
 ## Building for production
 
@@ -198,9 +180,8 @@ npm run generate      # outputs static files to .output/public
 npm run preview       # serve the production build locally to verify
 ```
 
-The `.output/public` directory is what gets synced to S3. It includes
-`index.html`, a prerendered `404.html`, hashed `_nuxt/` assets, and everything
-under `public/`.
+`.output/public` is the deployed artifact: `index.html`, a prerendered
+`404.html`, hashed `_nuxt/` assets, and everything under `public/`.
 
 ## Deployment
 
@@ -210,32 +191,26 @@ against the same domain).
 ### GitHub Pages (primary)
 
 On every push to `main` (or a manual run),
-[`.github/workflows/deploy_pages.yml`](.github/workflows/deploy_pages.yml)
-generates the static site and publishes it to **GitHub Pages** via the official
-`actions/deploy-pages` flow. It builds with `NUXT_APP_BASE_URL=/<repo>/` so assets
-resolve under the project-page subpath (`https://<user>.github.io/<repo>/`), and
-ships [`public/.nojekyll`](public/.nojekyll) so the `_nuxt/` directory isn't
-stripped by Jekyll.
+[`deploy_pages.yml`](.github/workflows/deploy_pages.yml) runs the unit suite,
+generates the site and publishes it via `actions/deploy-pages`. It builds with
+`NUXT_APP_BASE_URL=/<repo>/` so assets resolve under the project-page subpath,
+and ships [`public/.nojekyll`](public/.nojekyll) so `_nuxt/` isn't stripped.
 
-**One-time setup:** GitHub → **Settings → Pages → Build and deployment → Source:
-GitHub Actions**. The deploy URL appears on the workflow's `github-pages`
-environment.
+**One-time setup:** GitHub → **Settings → Pages → Build and deployment →
+Source: GitHub Actions**.
 
-> **Custom domain / user site at root?** Set `NUXT_APP_BASE_URL` to `/` in the
-> workflow and add a `CNAME`. Note: GitHub Pages cannot set custom response
-> headers (no HSTS/CSP) — the AWS/CloudFront path can.
+> **Custom domain or user site at root?** Set `NUXT_APP_BASE_URL` to `/` in the
+> workflow and add a `CNAME`. GitHub Pages cannot set custom response headers
+> (no HSTS/CSP) — the AWS/CloudFront path can.
 
 ### Cloud CDN — AWS / Azure / GCP (alternative)
 
 A manual **`workflow_dispatch`** run of
-[`.github/workflows/deploy_prod.yml`](.github/workflows/deploy_prod.yml) **builds
-the site once** and fans the artifact out to whichever clouds you enable via the
-run's checkboxes (`deploy_aws` / `deploy_azure` / `deploy_gcp`). Each cloud job
-authenticates with **GitHub OIDC** (no stored keys), reads its resource names
-from the deploy secret it provisioned, syncs the files, and invalidates the CDN.
-A `concurrency` group serializes deploys.
-
-**Required GitHub secrets / variables** (set from each stack's `terraform output`):
+[`deploy_prod.yml`](.github/workflows/deploy_prod.yml) tests and builds once,
+then fans the artifact out to whichever clouds the run's checkboxes enable. Each
+cloud job authenticates with **GitHub OIDC** (no stored keys), reads its resource
+names from the deploy secret it provisioned, syncs the files and invalidates the
+CDN. A `concurrency` group serializes deploys.
 
 | Cloud | Secrets                                                       | Variables         |
 | ----- | ------------------------------------------------------------- | ----------------- |
@@ -243,22 +218,12 @@ A `concurrency` group serializes deploys.
 | Azure | `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_SUBSCRIPTION_ID` | `AZURE_KEY_VAULT` |
 | GCP   | `GCP_WORKLOAD_IDENTITY_PROVIDER`, `GCP_SERVICE_ACCOUNT`       | `GCP_PROJECT`     |
 
-The repo must also define a **`Prod`** GitHub environment (every deploy job runs
-in it, and each OIDC trust is scoped to `environment:Prod` by default).
+The repo must also define a **`Prod`** GitHub environment — every deploy job runs
+in it, and each OIDC trust is scoped to `environment:Prod`.
 
-➡️ **Per-cloud provisioning, the deploy-identity matrix, and the security model
+➡️ **Per-cloud provisioning, the deploy-identity matrix and the security model
 are documented in [`infra/README.md`](infra/README.md).**
 
-## Accessibility, SEO & performance
-
-- **A11y:** skip link, semantic landmarks, ARIA on the mobile-menu toggle,
-  visible focus states, and a `prefers-reduced-motion` block that disables
-  animations and reveals.
-- **SEO:** `<html lang="en">`, meta description, Open Graph and Twitter Card
-  tags, and a `robots.txt`. _(Set `og:image`/`twitter:image` to an absolute URL
-  once a production domain is configured — social crawlers don't resolve
-  relative paths.)_
-- **Performance:** static prerender, CloudFront compression + caching,
-  preconnected fonts, lazy-loaded brand icons, and a JS-light reveal mechanism.
+---
 
 © Manideep Chittineni. All rights reserved.
