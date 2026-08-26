@@ -3,13 +3,11 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [main, develop]
+    branches: [main]
 
-# Least privilege: read-only by default. No job needs more for a build/scan gate.
 permissions:
   contents: read
 
-# Cancel superseded runs on the same ref to save minutes.
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -35,12 +33,21 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
+      - name: Run unit tests
+        run: npm run test:coverage
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: coverage
+          path: coverage
+          retention-days: 7
+          if-no-files-found: warn
+
       - name: Build static site
         run: npm run generate
 
-      # Fail the gate on high/critical advisories. Moderate (e.g. the dev-only
-      # @nuxt/devtools advisory, absent from the shipped artifact) is tracked by
-      # Dependabot rather than blocking PRs.
       - name: Audit dependencies
         run: npm audit --audit-level=high
 
@@ -51,10 +58,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          fetch-depth: 0 # full history so gitleaks scans every commit in the push/PR
+          fetch-depth: 0
 
       - name: Run gitleaks
-        # Free for individual accounts & public repos; GitHub orgs need a GITLEAKS_LICENSE.
         uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

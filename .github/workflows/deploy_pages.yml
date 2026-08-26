@@ -5,11 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Default-deny: read-only at the top level; the deploy job opts into the rest.
 permissions:
   contents: read
 
-# One concurrent Pages deploy; don't cancel an in-flight publish.
 concurrency:
   group: github-pages
   cancel-in-progress: false
@@ -34,9 +32,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run unit tests
+        run: npm run test:coverage
+
       - name: Generate static site
-        # Project Pages serve under /<repo>/, so build with that base URL.
-        # (For a custom domain / user site served at root, set this to "/".)
         env:
           NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
         run: npm run generate
@@ -52,7 +51,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    # Scopes needed only to publish: write the Pages deployment + mint the OIDC token.
     permissions:
       pages: write
       id-token: write
