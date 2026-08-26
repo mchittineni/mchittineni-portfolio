@@ -465,4 +465,16 @@ export const certifications = [
     href: 'https://www.credly.com/badges/e7176f89-1b4e-4b2f-95bb-de80550b2fc6/linked_in_profile',
     img: 'https://images.credly.com/size/340x340/images/3e0dcc2b-b0d3-4f20-959a-5c16373d8ac3/blob',
   },
+  {
+    title: 'AWS Data Streaming Demonstrated',
+    alt: 'AWS Microcredential',
+    href: 'https://www.credly.com/badges/d86ed057-838e-4a38-b943-a4b4702f01d6/linked_in_profile',
+    img: 'https://images.credly.com/size/340x340/images/6c76e6fe-d95c-46b1-a824-1effb29d2ae9/blob',
+  },
+  {
+    title: 'AWS Data Lakehouse Demonstrated',
+    alt: 'AWS Microcredential',
+    href: 'https://www.credly.com/badges/d6c3ed61-52ae-4fa5-8e9e-af27d9dded91/linked_in_profile',
+    img: 'https://images.credly.com/size/340x340/images/505b2a51-5e9c-4587-a632-cfa238fc0db3/blob',
+  },
 ]
