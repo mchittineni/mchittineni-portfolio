@@ -8,6 +8,12 @@ alternative **AWS / Azure / GCP** CDN paths) via **GitHub Actions**.
 ![Vue](https://img.shields.io/badge/Vue-3-4FC08D?logo=vue.js&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss&logoColor=white)
 ![Vitest](https://img.shields.io/badge/Vitest-coverage_%E2%89%A590%25-6E9F18?logo=vitest&logoColor=white)
+[![CI](https://github.com/mchittineni/mchittineni-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/mchittineni/mchittineni-portfolio/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/mchittineni/mchittineni-portfolio/pulls)
+
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=000000)](https://buymeacoffee.com/mchittineni)
+[![GitHub Sponsors](https://img.shields.io/badge/Sponsor-24292F?style=for-the-badge&logo=githubsponsors&logoColor=EA4AAA)](https://github.com/sponsors/mchittineni)
 
 > **Single source of truth: npm.** Use `package-lock.json` only — do not add
 > other lockfiles (`pnpm-lock.yaml` / `yarn.lock`).
