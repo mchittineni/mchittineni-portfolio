@@ -16,8 +16,27 @@ import {
 } from '~/content'
 import { certifications, proficiency, skillCategories } from '~/content/skills'
 
+const realLocation = window.location
+
+// Captures `location.href = ...` without navigating. The getter must keep working:
+// Nuxt's router hooks resolve URLs against `window.location.href`.
+function stubLocationHref(onSet: (value: string) => void = () => {}) {
+  Object.defineProperty(window, 'location', {
+    configurable: true,
+    value: {
+      get href() {
+        return realLocation.href
+      },
+      set href(value: string) {
+        onSet(value)
+      },
+    },
+  })
+}
+
 afterEach(() => {
   vi.restoreAllMocks()
+  Object.defineProperty(window, 'location', { configurable: true, value: realLocation })
 })
 
 describe('AboutSection', () => {
@@ -207,14 +226,7 @@ describe('ContactSection', () => {
   it('hands the message off to a mailto with the fields encoded', async () => {
     const wrapper = await mountSuspended(ContactSection)
     const assign = vi.fn()
-    Object.defineProperty(window, 'location', {
-      configurable: true,
-      value: {
-        set href(value: string) {
-          assign(value)
-        },
-      },
-    })
+    stubLocationHref(assign)
 
     await wrapper.find('#name').setValue('Ada Lovelace')
     await wrapper.find('#email').setValue('ada@example.com')
@@ -231,10 +243,7 @@ describe('ContactSection', () => {
 
   it('clears the form after submitting', async () => {
     const wrapper = await mountSuspended(ContactSection)
-    Object.defineProperty(window, 'location', {
-      configurable: true,
-      value: { set href(_value: string) {} },
-    })
+    stubLocationHref()
 
     await wrapper.find('#name').setValue('Ada')
     await wrapper.find('form').trigger('submit')
